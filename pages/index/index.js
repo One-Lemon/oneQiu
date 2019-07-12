@@ -17,12 +17,12 @@ Page({
     centigradeColor: '#000',
     weather: {
       'country': '中国',
-      'city': '北京',
-      'data': [{
-        tem1: '',
-        tem2: ''
-      }]
+      'city': '北京'
     },
+    weekData: [{
+      tem1: '',
+      tem2: ''
+    }],
     nowTime: '',
     address: {},
     gps: {
@@ -30,17 +30,22 @@ Page({
       longitude: 0
     }
   },
-  // 设置随机颜色
-  chgCentigradeColor() {
+  // 随机颜色算法
+  colorFn() {
     let color = '#';
     let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
     for (let i = 0; i < 6; i++) {
       color += arr[Math.floor(Math.random() * 16)];
     }
-    this.setData({
-      centigradeColor: color
-    })
+    return color;
   },
+  // // 设置今天天气的随机颜色
+  // chgCentigradeColor() {
+
+  //   this.setData({
+  //     centigradeColor: this.colorFn()
+  //   })
+  // },
   // 设置到date中
   updateLocation(res) {
     let newGps = {
@@ -63,6 +68,7 @@ Page({
           duration: 2000,
           mask: false
         });
+        wx.stopPullDownRefresh();
         this.updateLocation(result);
       },
       fail: (e) => {
@@ -121,9 +127,18 @@ Page({
       success: (result) => {
         if (result.statusCode === 200) {
           let data = result.data;
+          let weekData = data.data.map(item => {
+            let day = item.day;
+            let index = day.indexOf('（');
+            day = day.substr(index + 1, 2);
+            item.day = day;
+            item.bgColor = this.colorFn();
+            return item;
+          })
           this.setData({
             weather: data,
-            nowTime: data.update_time.split(' ')[0]
+            nowTime: data.update_time.split(' ')[0],
+            weekData: weekData
           })
         }
       },
@@ -135,56 +150,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    this.chgCentigradeColor();
+    // this.chgCentigradeColor();
     this.getLocation();
-    setInterval(this.chgCentigradeColor, 500);
+    setInterval(() => {
+      this.setData({
+        centigradeColor: this.colorFn()
+      })
+    }, 500);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-
+    this.getLocation();
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  chgAddress() {
+    wx.chooseLocation({
+      success: (result) => {
+        let gps = {
+          latitude: result.latitude,
+          longitude: result.longitude
+        };
+        this.setData({
+          gps
+        })
+        this.getAddress(gps);
+      }
+    });
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onShareAppMessage() {
+    return {
+      title: '震惊！这个小程序里面居然能看到...',
+      path: 'pages/index/index'
+    }
   }
 })

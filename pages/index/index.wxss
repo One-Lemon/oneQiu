@@ -1,11 +1,15 @@
 /* pages/index/index.wxss */
+
 .address-warp {
   display: flex;
   height: 70rpx;
+  white-space: nowrap;
   align-items: center;
+  padding: 0 20rpx;
 }
 
 .address {
+  flex: 1;
   margin-left: 0;
   margin-right: 15rpx;
   border-radius: 5rpx;
@@ -13,14 +17,17 @@
   height: 50rpx;
   line-height: 50rpx;
   font-size: 28rpx;
-  color: #f56b25;
+  margin: 0 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .weather {
-  /* background: #dfdfdf; */
-  border: 2rpx dashed #07c160;
-  margin: 10rpx;
-  height: 500rpx;
+  border: 4rpx solid #07c160;
+  border-radius: 10rpx;
+  margin:20rpx;
+  padding: 20rpx;
   overflow: hidden;
 }
 
@@ -34,4 +41,58 @@
 .centigrade {
   text-align: center;
   position: relative;
+}
+
+.tips_top {
+  margin: 30rpx 0;
+}
+
+.tips_bottom {
+  font-size: 28rpx;
+}
+
+/* 一周的天气 */
+.scroll-warp {
+  width: 710rpx;
+  white-space: nowrap;
+  height: 250rpx;
+  margin: 0rpx 20rpx 40rpx;
+}
+.week{
+  margin: 20rpx ;
+}
+.vi{
+  width: 300rpx;
+  margin-right: 20rpx;
+  height: 100%;
+  display: inline-block;
+  color: white;
+  border-radius: 6rpx;
+  box-shadow: 8rpx 8rpx 8rpx rgba(0 , 0, 0, 0.5);
+}
+/* 顶部卡片样式 */
+.card-top{
+  height: 200rpx;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top-wendu {
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 卡片底部样式 */
+.card-bottom{
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  color: black;
+  height: 20%;  
+}
+.time {
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 50rpx;
 }

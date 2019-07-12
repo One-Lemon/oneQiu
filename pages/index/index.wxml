@@ -1,26 +1,40 @@
 <!-- 顶部图片 -->
-<map id="" class="2" longitude='{{gps.longitude}}' latitude="{{gps.latitude}}" scale="16" show-location="true" show-compass="true" 
-  bindregionchange="" bindtap="" bindupdated=""  style="width: 100%;height: 520rpx"></map>
+<map id="" class="2" longitude='{{gps.longitude}}' latitude="{{gps.latitude}}" scale="16" show-location="true" show-compass="true" bindregionchange="" bindtap="" bindupdated="" style="width: 100%;height: 520rpx"></map>
 <view class="address-warp">
   当前位置：
-  <text class="address">{{address.province + address.city + address.district + 
-    address.street}}</text>
-  <text class="address">更改定位</text>
+  <text class="address">{{ address.city?address.province + address.city + address.district + 
+    address.street:'定位失败QAQ'}}</text>
+  <text style="color: red" bind:tap="chgAddress">更改定位</text>
 </view>
 <view class="weather">
   <view class="cityName" hover-class="none" hover-stop-propagation="false">
     <text>{{weather.country + ' - ' + weather.city}}（更新：{{ nowTime }}）</text>
   </view>
   <view class="centigrade">
-  <view  style="color:{{centigradeColor}};transition: all .5s;font-size: 80rpx;">
-      {{weather.data[0].tem2 + ' - ' + weather.data[0].tem1}}
-  </view>
-    <view class="tips">
-      {{weather.data[0].week + weather.data[0].wea +
-      weather.data[0].air_level }}
+    <view style="color:{{centigradeColor}};transition: all .5s;font-size: 80rpx;">
+      {{weekData[0].day?weekData[0].tem2 + ' - ' + weekData[0].tem1:''}}
     </view>
-    <view>
-    {{ weather.data[0].air_tips}}
+    <view class="tips_top">
+      {{weekData[0].day?weekData[0].day + " " + weekData[0].week + " "+ weekData[0].wea +" "+ weekData[0].air_level:'别急...加载呢' }}
+    </view>
+    <view class="tips_bottom">
+      {{ weekData[0].air_tips}}
     </view>
   </view>
+</view>
+<!-- 最近一周的天气 -->
+<view>
+  <view class="week">最近一周(点击查看详情)</view>
+  <scroll-view class="scroll-warp" scroll-x="{{true}}">
+    <view class="vi" wx:for="{{weekData}}"  wx:key="{{index}}">
+      <view class="card-top" style="background: {{item.bgColor}}">
+        <view class="top-wendu">{{item.day?item.tem2 + ' - ' + item.tem1:''}}</view>
+        <view class="top-wea">{{ item.day?item.day + ' ' + item.wea:'加载中...' }}</view>
+        <view class="top-time">{{item.date }}</view>
+      </view>
+      <view class="card-bottom">
+        <view class="time">{{ item.week }}</view>
+      </view>
+    </view>
+  </scroll-view>
 </view>
