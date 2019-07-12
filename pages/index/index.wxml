@@ -1,13 +1,17 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<!-- 顶部图片 -->
+<image src="https://pic4.zhimg.com/v2-3be05963f5f3753a8cb75b6692154d4a_1200x500.jpg" style="width: 100%" />
+<view class="address-warp">
+  当前位置：
+  <text class="address">{{address.province + address.city + address.district + 
+    address.street}}</text>
+  <text class="address">更改定位</text>
+</view>
+<view class="weather">
+  <view class="cityName" hover-class="none" hover-stop-propagation="false">
+    <text>{{weather.country + ' - ' + weather.city}}（更新：{{ nowTime }}）</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="centigrade" style="color:{{centigradeColor}}" bind:tap="chgCentigradeColor">
+    <text class="clickMe">盘它 →</text>
+    {{weather.data[0].tem2 + ' - ' + weather.data[0].tem1}}
   </view>
 </view>

@@ -41,13 +41,38 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 2,
+			"list": [
+				{
+					"id": -1,
+					"name": "pages/pull/pull",
+					"pathName": "pages/pull/pull",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/maizuo/maizuo",
+					"pathName": "pages/maizuo/maizuo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"scene": null
+				}
+			]
 		}
 	}
 }

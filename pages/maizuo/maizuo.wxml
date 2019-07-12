@@ -1,0 +1,14 @@
+<swiper autoplay="{{true}}" circular="{{true}}" class="swiper">
+  <block wx:for="{{banner}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item.imgUrl}}" class="swiper-image" />
+    </swiper-item>
+  </block>
+</swiper>
+<view class="border-warp">
+  <view class="tabber">
+    <view bind:tap="goLeft">正在热映</view>
+    <view bind:tap="goRight">即将上映</view>
+  </view>
+  <view class="border" animation="{{animation}}" />
+</view>

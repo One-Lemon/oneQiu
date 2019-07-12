@@ -1,0 +1,4 @@
+<text id="title">开始卖座</text>
+<view class="box" wx:for="{{films}}">
+  <view class="films-item">{{item.filmId+'----'+item.name}}</view>
+</view>

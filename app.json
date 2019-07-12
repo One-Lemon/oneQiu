@@ -1,13 +1,50 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/maizuo/maizuo",
+    "pages/pull/pull"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "顺着网线来揍你！！"
+    }
+  },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#07C160",
+    "navigationBarTitleText": "一个秋子",
+    "backgroundColorBottom": "#2db2f0",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#07C160",
+    "selectedColor": "#fff",
+    "position": "top",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index1.png"
+      },
+      {
+        "pagePath": "pages/pull/pull",
+        "text": "生活",
+        "iconPath": "images/log.png",
+        "selectedIconPath": "images/log1.png"
+      },
+      {
+        "pagePath": "pages/maizuo/maizuo",
+        "text": "电影",
+        "iconPath": "images/movie.png",
+        "selectedIconPath": "images/movie1.png"
+      },
+      {
+        "pagePath": "pages/maizuo/maizuo",
+        "text": "更多",
+        "iconPath": "images/movie.png",
+        "selectedIconPath": "images/movie1.png"
+      }
+    ]
+  }
 }

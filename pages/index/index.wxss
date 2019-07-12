@@ -1,21 +1,45 @@
-/**index.wxss**/
-.userinfo {
+/* pages/index/index.wxss */
+.address-warp {
   display: flex;
-  flex-direction: column;
+  height: 70rpx;
   align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.address {
+  margin-left: 0;
+  margin-right: 15rpx;
+  border-radius: 5rpx;
+  background: none;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color: #f56b25;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.weather {
+  /* background: #dfdfdf; */
+  border: 2rpx dashed #07c160;
+  margin: 10rpx;
+  height: 500rpx;
+  overflow: hidden;
 }
 
-.usermotto {
-  margin-top: 200px;
+.cityName {
+  width: 90%;
+  border-bottom: 2rpx solid #07c160;
+  padding-bottom: 12rpx;
+  margin: 40rpx auto;
+}
+
+.centigrade {
+  font-size: 80rpx;
+  text-align: center;
+  position: relative;
+}
+
+.clickMe {
+  font-size: 24rpx;
+  position: absolute;
+  left: 50rpx;
+  top: 38rpx;
 }

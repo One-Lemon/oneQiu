@@ -1,0 +1,27 @@
+#title {
+  display: block;
+  text-align: center;
+}
+.swiper{
+  height: 240px;
+}
+.swiper-image{
+  width: 100%;
+}
+.tabber {
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+} 
+.border-warp {
+  position: relative;
+}
+.border{
+  background: rebeccapurple;
+  height: 1px;
+  width: 15%;
+  position: absolute;
+  bottom: 0;
+  left: 17.5%;
+}
