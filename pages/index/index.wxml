@@ -1,5 +1,6 @@
 <!-- 顶部图片 -->
-<image src="https://pic4.zhimg.com/v2-3be05963f5f3753a8cb75b6692154d4a_1200x500.jpg" style="width: 100%" />
+<map id="" class="2" longitude='{{gps.longitude}}' latitude="{{gps.latitude}}" scale="16" show-location="true" show-compass="true" 
+  bindregionchange="" bindtap="" bindupdated=""  style="width: 100%;height: 520rpx"></map>
 <view class="address-warp">
   当前位置：
   <text class="address">{{address.province + address.city + address.district + 
@@ -10,8 +11,16 @@
   <view class="cityName" hover-class="none" hover-stop-propagation="false">
     <text>{{weather.country + ' - ' + weather.city}}（更新：{{ nowTime }}）</text>
   </view>
-  <view class="centigrade" style="color:{{centigradeColor}}" bind:tap="chgCentigradeColor">
-    <text class="clickMe">盘它 →</text>
-    {{weather.data[0].tem2 + ' - ' + weather.data[0].tem1}}
+  <view class="centigrade">
+  <view  style="color:{{centigradeColor}};transition: all .5s;font-size: 80rpx;">
+      {{weather.data[0].tem2 + ' - ' + weather.data[0].tem1}}
+  </view>
+    <view class="tips">
+      {{weather.data[0].week + weather.data[0].wea +
+      weather.data[0].air_level }}
+    </view>
+    <view>
+    {{ weather.data[0].air_tips}}
+    </view>
   </view>
 </view>

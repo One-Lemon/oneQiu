@@ -15,12 +15,19 @@ Page({
    */
   data: {
     centigradeColor: '#000',
-    weather: {},
+    weather: {
+      'country': '中国',
+      'city': '北京',
+      'data': [{
+        tem1: '',
+        tem2: ''
+      }]
+    },
     nowTime: '',
     address: {},
     gps: {
-      latitude: '',
-      longitude: '113.88308'
+      latitude: 0,
+      longitude: 0
     }
   },
   // 设置随机颜色
@@ -71,8 +78,7 @@ Page({
       lon = gps.longitude;
     wx.showLoading({
       title: '定位中',
-      mask: true,
-      duration: 3000
+      mask: true
     });
     let SIG = md5("/ws/geocoder/v1?key=" + QQMapKey + "&location=" + String(lat) + "," + String(lon) + SK)
     wx.request({
@@ -87,6 +93,7 @@ Page({
           that.setData({
             address: result.data.result.address_component
           })
+          wx.hideLoading();
           that.getWeather();
         }
       },
@@ -127,9 +134,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     this.chgCentigradeColor();
     this.getLocation();
+    setInterval(this.chgCentigradeColor, 500);
   },
 
   /**

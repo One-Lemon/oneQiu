@@ -32,14 +32,6 @@
 }
 
 .centigrade {
-  font-size: 80rpx;
   text-align: center;
   position: relative;
-}
-
-.clickMe {
-  font-size: 24rpx;
-  position: absolute;
-  left: 50rpx;
-  top: 38rpx;
 }
